@@ -8,14 +8,6 @@
 TreeNode::TreeNode(int d)
 {
 	data=d;
-	left=right=parent=NULL;
-}
-
-TreeNode::TreeNode(int d,TreeNode *const p)
-{
-	data=d;
-	left=right=0;
-	parent=p;
 }
 
 Tree::Tree()
@@ -25,7 +17,7 @@ Tree::Tree()
 
 void Tree::insert(int data)
 {
-	if(!root)
+	if(root==NULL)
 	{
 		root=new TreeNode(data);
 	}
@@ -39,7 +31,7 @@ void Tree::insert(TreeNode *const node,int data)
 {
 	if(data<node->data)
 	{
-		if(!node->left)
+		if(node->left==NULL)
 		{
 			node->left=new TreeNode(data);
 		}
@@ -50,7 +42,7 @@ void Tree::insert(TreeNode *const node,int data)
 	}
 	else if(data>node->data)
 	{
-		if(!node->right)
+		if(node->right==NULL)
 		{
 			node->right=new TreeNode(data);
 		}
@@ -63,7 +55,7 @@ void Tree::insert(TreeNode *const node,int data)
 
 void Tree::preorder(const TreeNode* node)
 {
-	if(!node) return;
+	if(node==NULL) return;
 	std::cout<<node->data<<" ";
 	preorder(node->left);
 	preorder(node->right);
@@ -71,7 +63,7 @@ void Tree::preorder(const TreeNode* node)
 
 void Tree::inorder(const TreeNode* node)
 {
-	if(!node) return;
+	if(node==NULL) return;
 	inorder(node->left);
 	std::cout<<node->data<<" ";
 	inorder(node->right);
@@ -79,7 +71,7 @@ void Tree::inorder(const TreeNode* node)
 
 void Tree::postorder(const TreeNode* node)
 {
-	if(!node) return;
+	if(node==NULL) return;
 	postorder(node->left);
 	postorder(node->right);
 	std::cout<<node->data<<" ";
@@ -102,22 +94,4 @@ void Tree::traverse(int order)
 			return;
 	}
 	std::cout<<std::endl;
-}
-
-TreeNode* Tree::find(int data)
-{
-	TreeNode *i=root;
-	while(i)
-	{
-		if(data<i->data)
-		{
-			i=i->left;
-		}
-		else if(data>i->data)
-		{
-			i=i->right;
-		}
-		else return i;
-	}
-	return 0;
 }

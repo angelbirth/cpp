@@ -4,7 +4,6 @@ class TreeNode
 		TreeNode *left,*right,*parent;
 		int data;
 		TreeNode(int);
-		TreeNode(int,TreeNode *const);
 };
 
 enum TraversalOrder
@@ -26,6 +25,5 @@ class Tree
 	public:
 		void insert(int);
 		void traverse(int);
-		TreeNode *find(int);
 		Tree();
 };
